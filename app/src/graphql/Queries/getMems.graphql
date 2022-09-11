@@ -1,0 +1,8 @@
+query GetMems($groupId: Float!) {
+  getMems(groupId: $groupId) {
+    groupId
+    id
+    memberId
+    joined
+  }
+}

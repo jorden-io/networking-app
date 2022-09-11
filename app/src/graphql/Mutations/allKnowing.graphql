@@ -1,0 +1,10 @@
+# query getUser {
+#   getUserById(id: $getUserById) {
+#     id
+#     email
+#   }, allTaskData {
+#     task
+#     id
+#     yourid
+#   }
+# }

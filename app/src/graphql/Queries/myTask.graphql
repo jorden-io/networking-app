@@ -1,0 +1,7 @@
+query myTasks {
+  myTasks{
+    id
+    task
+    yourid
+  }
+}

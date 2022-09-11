@@ -1,0 +1,10 @@
+query GetGroupUser($memberId: Float!) {
+  getGroupUser(memberId: $memberId) {
+    id
+    userName
+    firstName
+    lastName
+    created
+    email
+  }
+}

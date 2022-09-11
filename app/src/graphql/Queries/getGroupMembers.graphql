@@ -1,0 +1,8 @@
+query GetGroupMembers($memberId: Float!) {
+  getGroupMembers(memberId: $memberId) {
+    id
+    groupId
+    memberId
+    joined
+  }
+}

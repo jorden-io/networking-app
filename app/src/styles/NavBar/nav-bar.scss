@@ -1,0 +1,51 @@
+.nav-container{
+    margin: 0;
+    nav{
+        background-color: white;
+        box-shadow: 0px 0px 4px grey;
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+        a{
+        padding: 20px;
+        text-decoration: none;
+        color: grey;
+        }
+        .side-nav-btn{
+            color: grey;
+            font-size: 25px;
+            background: none;
+            box-shadow: none;
+            float: left;
+            &:hover{
+                box-shadow: none;
+                color: black;
+            }
+        }
+        button{
+            cursor: pointer;
+            border: none;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 12px;
+            color: grey;
+            box-shadow: 0px 0px 4px rgb(97, 97, 97);
+            background-color: rgb(230, 230, 230);
+            transition: 0.5s;
+            width: 120px;
+            &:first-child{
+                border-right: 2px rgb(164, 164, 164) solid;
+                border-radius: 0px;
+                margin-left: 5px;
+            }
+        &:last-child{
+            margin-right: 10px;
+        }
+        &:hover{
+            box-shadow: 0px 0px 1.8px rgb(60, 60, 60);
+        }
+        }
+    }
+}

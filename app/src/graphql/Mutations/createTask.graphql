@@ -1,0 +1,3 @@
+mutation CreateTask($truth: Boolean!, $task: String!) {
+  createTask(truth: $truth, task: $task)
+}

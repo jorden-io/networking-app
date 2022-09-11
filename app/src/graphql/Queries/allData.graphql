@@ -1,0 +1,19 @@
+query userData($getUserByIdId: Float!) {
+  myTasks {
+    id
+    yourid
+    task
+    truth
+  }, getUserById(id: $getUserByIdId) {
+     id
+     firstName
+     lastName
+     userName
+     email
+  }, myGroups {
+    description
+    groupId
+    groupName
+    leaderId
+  }
+}
