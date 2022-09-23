@@ -91,6 +91,84 @@ const recLlFind = (head, target) => {
         return true;
     return recLlFind(head.next, target);
 };
+export class Tree {
+    val;
+    left;
+    right;
+    constructor(val) {
+        this.val = val;
+        this.right = null;
+        this.left = null;
+    }
+}
+const one = new Tree(1);
+const two = new Tree(2);
+const three = new Tree(3);
+const four = new Tree(4);
+const five = new Tree(5);
+const six = new Tree(6);
+one.right = two;
+one.left = three;
+two.right = four;
+two.left = five;
+three.right = six;
+const treeS = (root) => {
+    const stack = [root];
+    while (stack.length !== 0) {
+        const current = stack.pop();
+        console.log(current?.val);
+        if (current?.right)
+            stack.push(current.right);
+        if (current?.left)
+            stack.push(current.left);
+    }
+};
+//treeS(one);
+const treeB = (root) => {
+    const q = [root];
+    while (q.length !== 0) {
+        const current = q.shift();
+        console.log(current?.val);
+        if (current?.right)
+            q.push(current.right);
+        if (current?.left)
+            q.push(current.left);
+    }
+};
+//treeB(one)
+const fiby = (n) => {
+    if (n === 0)
+        return 0;
+    if (n === 1)
+        return 1;
+    return fiby(n - 1) + fiby(n - 2);
+};
+console.log(fiby(15));
+const treeSum = (total, current) => {
+    if (current.right === null && current.left === null) {
+    }
+};
+const recF = (current) => {
+    if (current.val === null)
+        return;
+    if (current.next) {
+        console.log(current.val);
+        return recF(current.next);
+    }
+};
+//recF(a);
+const f = (root) => {
+    console.log("hey");
+    const stack = [root];
+    while (root.val !== null) {
+        const current = stack.pop();
+        console.log(current?.val);
+        if (current?.next) {
+            stack.push(current.next);
+        }
+    }
+};
+//f(a)
 const obj = {
     x: "hey",
     y: { next: a, val: 10 },
@@ -133,8 +211,6 @@ const reccy = (n) => {
         return true;
     return reccy(n - 1);
 };
-//console.log(reccy(20));
-brainFuck([]);
 let memo = {
     x: [
         [1, 2, 3],
@@ -167,7 +243,7 @@ const fib = (n) => {
         return n;
     return fib(n - 1) + fib(n - 2);
 };
-console.log(fib(5));
+//console.log(fib(5));
 const getNodeVal = (head, index) => {
     if (head === null)
         return null;

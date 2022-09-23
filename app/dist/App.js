@@ -49,6 +49,6 @@ const App = () => {
     const dat = new Date();
     const { Fetchy } = Fetched();
     const hey = useMemo(() => { }, [slut]);
-    return (_jsx(ApolloProvider, { client: client, children: _jsx(BrowserRouter, { children: _jsxs(GlobalContext.Provider, { value: { x: 10, y: "hey doods" }, children: [_jsx(NavBar, { name: 'jorby' }), _jsx("div", { className: "App", children: _jsx(Mems, {}) }), _jsxs(Routes, { children: [_jsx(Route, { path: "/register", element: _jsx(Register, {}) }), _jsx(Route, { path: "/login", element: _jsx(Login, {}) }), _jsx(Route, { path: "/chat", element: _jsx(Chat, {}) }), _jsx(Route, { path: "/home", element: _jsx(Home, {}) })] })] }) }) }));
+    return (_jsx(ApolloProvider, { client: client, children: _jsx(BrowserRouter, { children: _jsxs(GlobalContext.Provider, { value: { x: 10, y: "hey doods" }, children: [_jsx(NavBar, { name: 'jorby' }), _jsxs("div", { className: "App", children: [_jsx(Mems, {}), _jsx(Fetchy, {})] }), _jsxs(Routes, { children: [_jsx(Route, { path: "/register", element: _jsx(Register, {}) }), _jsx(Route, { path: "/login", element: _jsx(Login, {}) }), _jsx(Route, { path: "/chat", element: _jsx(Chat, {}) }), _jsx(Route, { path: "/home", element: _jsx(Home, {}) })] })] }) }) }));
 };
 export default App;

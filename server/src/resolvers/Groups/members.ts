@@ -13,25 +13,33 @@ import User from "../../entity/User";
 import { In } from "typeorm";
 @Resolver(Members)
 export default class memberResolver {
-  @Query(() => [Members])
-  async getGroupMembers(@Arg("memberId", () => Number) memberId: any) {
-    return await Members.find({
+  @Query(() => [User])
+  async getGroupMembers(@Arg("groupId", () => Number) groupId: any) {
+    return await User.find({
       join: {
         alias: "groupMembers",
         innerJoinAndSelect: {
           users: "groupMembers.users",
         },
       },
-      relations: ["users"],
+      relations: ["members"],
       where: {
-        id: In(memberId),
+        id: In(groupId),
       },
     });
   }
-  
-  @Query(() => [Members])
-  async getMems(@Arg("groupId", () => Number) groupId: number) {
-    return await Members.find({ where: { groupId } });
+
+  @Query(() => [User])
+  async workAround(@Arg("id", () => Number) id: number) {
+    return await User.find({ where: { id: id } });
+  }
+
+  @Query(() => [User])
+  async getMems(@Arg("id", () => Number) id: number) {
+    return await User.find({
+      relations: ["members"],
+      where: { members: { memberId: id } },
+    });
   }
 
   @Query(() => [User])

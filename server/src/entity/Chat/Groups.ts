@@ -34,6 +34,9 @@ export default class Group extends BaseEntity {
   @CreateDateColumn()
   created: Date;
 
+  @Field(() => [User], {nullable: true})
+  theUsers: User[];
+
   @Field()
   @UpdateDateColumn()
   updateTime: Date;

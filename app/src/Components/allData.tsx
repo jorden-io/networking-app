@@ -29,7 +29,7 @@ const All: FC<Props> = () => {
   const [allUser, setAllUser] = useState<Array<User>>([]);
   const [allTask, setAllTask] = useState<Array<Task>>([]);
   const { data, loading } = useUserDataQuery({
-    variables: {getUserByIdId: 3}
+    variables: { getUserByIdId: 3 },
   });
   const notComp = {
     color: "red",

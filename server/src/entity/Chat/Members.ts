@@ -34,9 +34,7 @@ export default class Members extends BaseEntity {
   @JoinTable()
   group: Group[]
 
-  @ManyToMany(() => User, (user) => user.members,{
-     eager: true
-  })
+  @ManyToMany(() => User, (user) => user.members)
   @JoinTable()
   users: User[]
 }

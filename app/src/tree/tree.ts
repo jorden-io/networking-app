@@ -1,3 +1,36 @@
+class Stack<T> {
+  private count: number = 0;
+  readonly items: any = {};
+  constructor(init?: T) {
+    this.items[this.count] = init;
+    this.count = 1;
+  }
+  pop = <T>(): undefined | T => {
+    if (this.count === 0) {
+      return undefined;
+    }
+    this.count--;
+    const result = this.items[this.count];
+    delete this.items[this.count];
+    return result;
+  };
+  push = <T>(value: T): void => {
+    this.items[this.count] = value;
+    this.count++;
+  };
+  last = () => {
+    return this.items[this.count - 1];
+  };
+  length = (): number => {
+    return this.count;
+  };
+  clear = () => {
+    this.count = 0;
+    for (let item in this.items) {
+      delete this.items[item];
+    }
+  };
+}
 export default class Node {
   val: string;
   left: Node | null;
@@ -8,13 +41,6 @@ export default class Node {
     this.right = null;
   }
 }
-interface Arr {
-  x: Array<number | string>
-}
-const last = <T> (arr: T): Array<T> => {
-  return ([arr]);
-};
-const vally = last('hey');
 
 const a = new Node("a");
 const b = new Node("b");
@@ -30,15 +56,36 @@ b.right = c;
 c.right = e;
 e.right = f;
 
-//stack pop/push
+const arr = [1, 2, 3];
+((): any => {
+  return new Promise((res, _) => {
+    res([...arr]);
+  })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+    .finally(() => {
+      console.log('done');
+    });
+})();
+const recDepth = (root: Node) => {
+  console.log(root.val);
+  if (root.right) recDepth(root.right);
+  if (root.left) recDepth(root.left);
+};
+//recDepth(a);
+
 const depthFirst = (root: Node): void => {
-  const stack = [root];
-  while (stack.length > 0) {
-    const current = stack.pop();
+  const stack = new Stack(root);
+  while (stack.length() > 0) {
+    const current: any = stack.pop();
     console.log(current?.val);
     if (current?.left != null) stack.push(current.left);
     if (current?.right != null) stack.push(current.right);
   }
 };
 
-depthFirst(a);
+//depthFirst(a);

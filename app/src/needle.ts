@@ -52,12 +52,12 @@ export const longestValidParentheses = (s: string): number => {
   const arr: string[] = [];
   for (let l: number = 0; l < s.length; l++) {
     arr.push(s[l]);
-  }
+  };
   if (arr[0] === ")" && arr[arr.length - 1] === "(") {
     arr.pop();
     arr.shift();
     if (arr.length === 0) return 0;
-  }
+  };
   if (arr[s.length - 1] === "(") arr.pop();
   if (arr[0] === ")") arr.shift();
   for (let i: number = 0; i < s.length; i++) {
@@ -65,14 +65,13 @@ export const longestValidParentheses = (s: string): number => {
       left.push("(");
     } else if (arr[i] === ")") {
       right.push(")");
-    }
-  }
+    }};
   let last: number = 0;
   for (let j: number = 0; j < right.length; j++) {
     if (right[j] === ")" && left[j] === "(") {
       stack.push("()");
     } else continue;
-  }
+  };
   return stack.length * 2;
 };
 console.log(longestValidParentheses(''));

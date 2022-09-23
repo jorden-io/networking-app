@@ -11,6 +11,7 @@ import logo from "./logo.svg";
 //import "./App.css";
 import "./distCSS/main.css";
 import main from "./comp";
+import {} from './gen'
 import { idk } from "./interface";
 import MainPoki from "./test";
 import Dik, { Matrix, matrixFind } from "./snip";
@@ -95,8 +96,8 @@ const App: FC = () => {
             <Mems />
             {/* <All /> */}
             {/* <Tasks />  */}
-            {/* <Fetchy />
-        <Reduce /> */}
+            <Fetchy />
+        {/* <Reduce /> */}
             {/* <Reac x={90} tar={100} />
             <Man x={slut} setSlut={setSlut} />
             <Dik x={10} />

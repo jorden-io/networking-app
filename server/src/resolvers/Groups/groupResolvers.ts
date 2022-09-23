@@ -6,10 +6,11 @@ import {
   Resolver,
   UseMiddleware,
 } from "type-graphql";
-// import Task from "./entity/Task";
 import { isAuth } from "../../isAuth";
 import { MyContext } from "../../MyContext";
 import Group from "../.././entity/Chat/Groups";
+import User from "../../entity/User";
+import Members from "../../entity/Chat/Members";
 
 @Resolver()
 export class groupResolvers {
@@ -19,9 +20,25 @@ export class groupResolvers {
     return Group.find({ where: { leaderId: payload?.userID } });
   }
 
+  @Query(() => [Members])
+  memys() {
+    return Members.find();
+  }
+
   @Query(() => [Group])
   allGroups() {
     return Group.find();
+  }
+
+  @Query(() => [Group, User])
+  async testGetMembs(@Arg("id", () => Number) id: number) {
+    await Group.find({
+      where: { groupId: id },
+    }).then((data) => {
+      return data.forEach((e) =>
+        User.find({ where: { members: { groupId: e.groupId } } })
+      );
+    });
   }
 
   @Mutation(() => Boolean)

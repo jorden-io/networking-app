@@ -44,7 +44,7 @@ import memberResolver from "./resolvers/Groups/members";
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
-  app.listen(4000, () => {
+  app.listen(8080, () => {
     console.log("server started");
   });
 })();

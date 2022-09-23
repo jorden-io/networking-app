@@ -69,7 +69,9 @@ export default class User extends BaseEntity {
   @JoinTable()
   comments: Comments[];
 
-  @ManyToMany(() => Members, (members) => members.users)
-  @JoinTable({name: 'memberId'})
+  @ManyToMany(() => Members, (members) => members.users, {
+    eager: true
+  })
+  @JoinTable()
   members: Members[];
 }

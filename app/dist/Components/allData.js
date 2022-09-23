@@ -6,7 +6,7 @@ const All = () => {
     const [allUser, setAllUser] = useState([]);
     const [allTask, setAllTask] = useState([]);
     const { data, loading } = useUserDataQuery({
-        variables: { getUserByIdId: 3 }
+        variables: { getUserByIdId: 3 },
     });
     const notComp = {
         color: "red",

@@ -1,3 +1,6 @@
+import { strictEqual } from "assert";
+import { LoneSchemaDefinitionRule } from "graphql";
+
 class Node {
   val: number;
   next: Node | null;
@@ -107,7 +110,81 @@ interface OBJ {
   c?: boolean | number;
   cb: () => Node;
 }
+export class Tree {
+  val: number;
+  left: Tree | null;
+  right: Tree | null;
+  constructor(val: number) {
+    this.val = val;
+    this.right = null;
+    this.left = null;
+  }
+}
+const one = new Tree(1);
+const two = new Tree(2);
+const three = new Tree(3);
+const four = new Tree(4);
+const five = new Tree(5);
+const six = new Tree(6);
 
+one.right = two;
+one.left = three;
+two.right = four;
+two.left = five;
+three.right = six;
+
+const treeS = (root: Tree): void => {
+  const stack: Array<Tree> = [root];
+  while (stack.length !== 0) {
+    const current = stack.pop();
+    console.log(current?.val);
+    if (current?.right) stack.push(current.right);
+    if (current?.left) stack.push(current.left);
+  }
+};
+//treeS(one);
+const treeB = (root: Tree): void => {
+  const q: Array<Tree> = [root];
+  while (q.length !== 0) {
+    const current = q.shift();
+    console.log(current?.val);
+    if (current?.right) q.push(current.right);
+    if (current?.left) q.push(current.left);
+  }
+};
+//treeB(one)
+const fiby = (n: number): any => {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  return fiby(n - 1) + fiby(n - 2);
+};
+console.log(fiby(15));
+
+const treeSum = (total: number, current: Tree): void => {
+  if (current.right === null && current.left === null) {
+  }
+};
+
+const recF = (current: Node): void => {
+  if (current.val === null) return;
+  if (current.next) {
+    console.log(current.val);
+    return recF(current.next);
+  }
+};
+//recF(a);
+const f = (root: Node): void => {
+  console.log("hey");
+  const stack: Array<Node> = [root];
+  while (root.val !== null) {
+    const current = stack.pop();
+    console.log(current?.val);
+    if (current?.next) {
+      stack.push(current.next);
+    }
+  }
+};
+//f(a)
 const obj: OBJ = {
   x: "hey",
   y: { next: a, val: 10 },
@@ -176,7 +253,7 @@ const reccy = (n: number): Function | boolean | any => {
 };
 //console.log(reccy(20));
 
-brainFuck([]);
+//brainFuck([]);
 type myObj = {
   x: Array<Array<number | string>>;
 };
@@ -210,7 +287,7 @@ const fib = (n: number): Function | number | any => {
   if (n === 0 || n === 1) return n;
   return fib(n - 1) + fib(n - 2);
 };
-console.log(fib(5));
+//console.log(fib(5));
 const getNodeVal = (head: Node | null, index: number): number | null => {
   if (head === null) return null;
   if (head.val === null) return null;

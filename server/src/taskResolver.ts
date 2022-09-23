@@ -13,6 +13,11 @@ export class taskResolver {
   }
 
   @Query(() => [Task])
+  allTasks() {
+    return Task.find()
+  }
+
+  @Query(() => [Task])
   @UseMiddleware(isAuth)
   allTaskData(@Ctx() { payload }: MyContext) {
     return Task.find({ where: { yourid: payload?.userID } });

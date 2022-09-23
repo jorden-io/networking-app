@@ -1,6 +1,6 @@
-import e from "express";
 import React, { FC, useEffect, useState } from "react";
 import { useGetGroupUserQuery, useGetMemsQuery } from "../../generated/graphql";
+
 interface Props {}
 
 interface Member {
@@ -8,6 +8,7 @@ interface Member {
   groupId: number;
   memberId: number;
 }
+
 const Mems: FC<Props> = () => {
   const [members, setMembers] = useState<Array<Member>>([]);
   const { loading } = useGetGroupUserQuery({
@@ -38,4 +39,5 @@ const Mems: FC<Props> = () => {
     </>
   );
 };
+
 export default Mems;
