@@ -1,3 +1,4 @@
+@import "./Variables/main.scss";
 $color: grey;
 // body{
 //   background-color: whitesmoke;
@@ -6,6 +7,10 @@ $color: grey;
 //   text-align: center;
 // }
 body {
+  font-weight: 500;
+  //color: rgb(200, 200, 200);
+  color: $main_txt_white;
+  background-color: $main_grey;
   text-align: center;
   padding: 0;
   margin: 0;

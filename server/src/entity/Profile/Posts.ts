@@ -15,26 +15,26 @@ import User from "../User";
 export default class Posts extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  postId: number;
+  post_id: number;
 
   @Field()
   @Column("text")
-  postTitle: string;
+  post_title: string;
 
   @Field()
   @Column("text")
-  postDescription: string;
+  post_description: string;
 
   @Field()
   @Column("int", {nullable: true})
-  userId: number;
+  user_id: number;
 
   @Field()
   @CreateDateColumn()
   created: Date;
   @Field()
   @UpdateDateColumn()
-  updateTime: Date;
+  update_time: Date;
 
   @ManyToMany(() => User, (user) => user.posts, {
     cascade: true

@@ -14,7 +14,7 @@ import Group from "./Groups";
 export default class Messages extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  messageId: number;
+  message_id: number;
 
   @Field()
   @Column("text")
@@ -22,11 +22,11 @@ export default class Messages extends BaseEntity {
 
   @Field()
   @Column("int")
-  userId: number;
+  user_id: number;
 
   @Field()
   @Column("int")
-  groupId: number;
+  group_id: number;
 
   @Field()
   @CreateDateColumn()

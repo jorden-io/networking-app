@@ -24,3 +24,5 @@ export default class Queue {
         }
     };
 }
+const queue = new Queue();
+queue.enqueue(1);

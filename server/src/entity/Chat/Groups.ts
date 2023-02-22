@@ -16,11 +16,11 @@ import Messages from "./Message";
 export default class Group extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  groupId: number;
+  group_id: number;
 
   @Field()
   @Column("text")
-  groupName: string;
+  group_name: string;
 
   @Field()
   @Column("text")
@@ -28,7 +28,7 @@ export default class Group extends BaseEntity {
 
   @Field()
   @Column("int")
-  leaderId: number;
+  leader_id: number;
 
   @Field()
   @CreateDateColumn()
@@ -39,7 +39,7 @@ export default class Group extends BaseEntity {
 
   @Field()
   @UpdateDateColumn()
-  updateTime: Date;
+  update_time: Date;
 
   @ManyToMany(() => User, (users) => users.groups, {
     cascade: true,

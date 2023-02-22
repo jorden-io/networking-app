@@ -24,15 +24,15 @@ export default class User extends BaseEntity {
 
   @Field()
   @Column("text", { unique: true, nullable: true })
-  userName: string;
+  user_name: string;
 
   @Field()
   @Column("text", { nullable: true })
-  firstName: string;
+  first_name: string;
 
   @Field()
   @Column("text", { nullable: true })
-  lastName: string;
+  last_name: string;
 
   @Field()
   @CreateDateColumn()

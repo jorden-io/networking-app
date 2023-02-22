@@ -1,15 +1,16 @@
+@import "../Variables/main.scss";
 .nav-container{
     margin: 0;
     nav{
-        background-color: white;
-        box-shadow: 0px 0px 4px grey;
+        background-color: $main_comp_grey;
+        box-shadow: 0px 0px 5px black;
         display: flex;
         justify-content: center;
         gap: 5%;
         a{
         padding: 20px;
         text-decoration: none;
-        color: grey;
+        color: rgb(133, 133, 133);
         }
         .side-nav-btn{
             color: grey;
@@ -19,7 +20,7 @@
             float: left;
             &:hover{
                 box-shadow: none;
-                color: black;
+                color: $main_txt_white;
             }
         }
         button{
@@ -27,13 +28,13 @@
             border: none;
             margin-top: 8px;
             margin-bottom: 8px;
-            border-radius: 6px;
+            border-radius: 3px;
             font-weight: bold;
             font-size: 12px;
-            color: grey;
-            box-shadow: 0px 0px 4px rgb(97, 97, 97);
-            background-color: rgb(230, 230, 230);
-            transition: 0.5s;
+            color: $main_txt_white;
+            box-shadow: 0px 0px 4px black;
+            background-color: rgb(133, 133, 133);
+            transition: 0.3s;
             width: 120px;
             &:first-child{
                 border-right: 2px rgb(164, 164, 164) solid;
@@ -44,7 +45,7 @@
             margin-right: 10px;
         }
         &:hover{
-            box-shadow: 0px 0px 1.8px rgb(60, 60, 60);
+            box-shadow: 0px 0px 2px black;
         }
         }
     }

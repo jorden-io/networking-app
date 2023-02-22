@@ -17,7 +17,7 @@ export class groupResolvers {
   @Query(() => [Group])
   @UseMiddleware(isAuth)
   myGroups(@Ctx() { payload }: MyContext) {
-    return Group.find({ where: { leaderId: payload?.userID } });
+    return Group.find({ where: { leader_id: payload?.userID } });
   }
 
   @Query(() => [Members])
@@ -33,10 +33,10 @@ export class groupResolvers {
   @Query(() => [Group, User])
   async testGetMembs(@Arg("id", () => Number) id: number) {
     await Group.find({
-      where: { groupId: id },
+      where: { group_id: id },
     }).then((data) => {
       return data.forEach((e) =>
-        User.find({ where: { members: { groupId: e.groupId } } })
+        User.find({ where: { members: { group_id: e.group_id } } })
       );
     });
   }
@@ -45,14 +45,14 @@ export class groupResolvers {
   @UseMiddleware(isAuth)
   async createGroup(
     @Ctx() { payload }: MyContext,
-    @Arg("groupName", () => String) groupName: string,
+    @Arg("groupName", () => String) group_name: string,
     @Arg("description", () => String) description: string
   ) {
     try {
       await Group.insert({
-        groupName,
+        group_name,
         description,
-        leaderId: payload?.userID,
+        leader_id: payload?.userID,
       });
     } catch (err) {
       console.log(err);

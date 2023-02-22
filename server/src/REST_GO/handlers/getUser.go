@@ -6,17 +6,15 @@ import (
 
 	"exe.com/helpers"
 	"exe.com/models"
-)
-
-const (
-	DB_USER     = "jorby"
-	DB_PASSWORD = "Minecraft256$"
-	DB_NAME     = "test"
+	"github.com/gorilla/mux"
 )
 
 func GetUsers(w http.ResponseWriter, r *http.Request) {
 	db := helpers.SetUpDb()
-	rows, err := db.Query("SELECT * FROM users;")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+	params := mux.Vars(r)
+	id := params["id"]
+	rows, err := db.Query("SELECT * FROM users WHERE id = $1", id)
 	helpers.CheckErr(err)
 	var users []models.User
 	for rows.Next() {
@@ -32,4 +30,5 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 	}
 	var res = models.JsonRes{Type: "succes", Data: users}
 	json.NewEncoder(w).Encode(res)
+	db.Close()
 }

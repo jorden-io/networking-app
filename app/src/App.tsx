@@ -2,22 +2,14 @@ import React, {
   FC,
   useState,
   useMemo,
-  useContext,
   createContext,
-  useReducer,
+  useEffect,
 } from "react";
-import Person from "./Class";
 import logo from "./logo.svg";
 //import "./App.css";
 import "./distCSS/main.css";
-import main from "./comp";
-import {} from './gen'
-import { idk } from "./interface";
+import {} from "./gen";
 import MainPoki from "./test";
-import Dik, { Matrix, matrixFind } from "./snip";
-import Man from "./sr";
-import Reac from "./react";
-import Reduce from "./Reducer";
 import Fetched from "./data";
 import { Route, Router, BrowserRouter, Routes, Link } from "react-router-dom";
 import {
@@ -43,12 +35,11 @@ interface Make {
   x: number;
   y: string;
 }
-export const GlobalContext = createContext<Make>({x: 10, y: 'hey'});
+export const GlobalContext = createContext<Make>({ x: 10, y: "hey" });
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) => {
-      //alert(message);
-    });
+    graphQLErrors.map(({ message, locations, path }) => {});
   }
 });
 
@@ -75,45 +66,64 @@ const client = new ApolloClient({
   link: authLink.concat(link),
 });
 interface Pwopy {
-  x: string
+  x: string;
 }
 const App: FC = () => {
-  const { PokiDisplayer } = MainPoki();
-  const { Bunc } = main();
-  const [slut, setSlut] = useState<boolean>(false);
-  const dat = new Date();
+  useEffect(() => {
+    (async (id: number) => {
+      try {
+        const res = await fetch(`http://localhost:8000/getUsers/${id}`);
+        const parseRes = await res.json();
+        console.log(parseRes);
+        setData(parseRes.data);
+      } catch (err) {
+        console.log(err);
+      }
+    })(2);
+    return () => {
+      setData([]);
+    };
+  }, []);
+  interface User {
+    created: string;
+    id: number;
+    firstName: string;
+    lastName: string;
+    user_email: string;
+    password: string;
+  }
+  const [fetchedData, setData] = useState<User[]>([]);
   const { Fetchy } = Fetched();
-  const hey = useMemo(() => {}, [slut]);
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
         <GlobalContext.Provider value={{ x: 10, y: "hey doods" }}>
-          <NavBar name={'jorby'} />
+          <NavBar name={"jorby"} />
+          {fetchedData.map((e) => {
+            return (
+              <>
+                <div
+                  style={{
+                    background: "grey",
+                    padding: "20px",
+                    margin: "20px",
+                    borderRadius: "5px",
+                    boxShadow: "0px 0px 5px black",
+                  }}
+                  key={e.id}
+                >
+                  <p onClick={() => alert(e.id)}>{e.id}</p>
+                  <p>{e.created}</p>
+                  <p>{e.firstName}</p>
+                  <p>{e.lastName}</p>
+                  <p>{e.user_email}</p>
+                </div>
+              </>
+            );
+          })}
           <div className="App">
-            {/* <div className="circle"></div>
-            <Register />
-            <GetUsers />*/}
             <Mems />
-            {/* <All /> */}
-            {/* <Tasks />  */}
             <Fetchy />
-        {/* <Reduce /> */}
-            {/* <Reac x={90} tar={100} />
-            <Man x={slut} setSlut={setSlut} />
-            <Dik x={10} />
-            <button
-              onClick={() => {
-                setSlut(true);
-              }}
-            >
-              setter
-            </button> */}
-            {/* {dat.getMinutes()} date */}
-            {/* <PokiDisplayer /> */}
-            {/* <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-            </header> */}
-            {/* <Bunc name={"jorden"} id={10} getId={() => 11} /> */}
           </div>
           <Routes>
             {/* <Route element={ProtectedRoutes}> */}

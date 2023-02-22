@@ -17,11 +17,11 @@ export default class Friends extends BaseEntity {
 
   @Field()
   @Column("int")
-  yourId: number;
+  your_id: number;
 
   @Field()
   @Column("int")
-  thierId: number;
+  thier_id: number;
 
   @ManyToMany(() => User, (user) => user.friends, {
     cascade: true

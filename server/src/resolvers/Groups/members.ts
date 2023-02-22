@@ -38,7 +38,7 @@ export default class memberResolver {
   async getMems(@Arg("id", () => Number) id: number) {
     return await User.find({
       relations: ["members"],
-      where: { members: { memberId: id } },
+      where: { members: { member_id: id } },
     });
   }
 
@@ -57,19 +57,19 @@ export default class memberResolver {
   @Mutation(() => Boolean)
   @UseMiddleware(isAuth)
   joinGroup(
-    @Arg("groupId", () => Number) groupId: number,
+    @Arg("groupId", () => Number) group_id: number,
     @Ctx() { payload }: MyContext
   ) {
-    Members.insert({ groupId: groupId, memberId: payload?.userID });
+    Members.insert({ group_id: group_id, member_id: payload?.userID });
     return true;
   }
   @Mutation(() => Boolean)
   @UseMiddleware(isAuth)
   leaveGroup(
-    @Arg("groupId", () => Number) groupId: number
+    @Arg("groupId", () => Number) group_id: number
     // @Ctx() { payload }: MyContext
   ) {
-    Members.delete({ groupId });
+    Members.delete({ group_id });
     return true;
   }
 }

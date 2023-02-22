@@ -21,7 +21,7 @@ export default class Task extends BaseEntity {
 
   @Field()
   @Column("int", {nullable: true})
-  yourid: number;
+  your_id: number;
 
   @ManyToMany(() => User, (user) => user.tasks, {
     cascade: true

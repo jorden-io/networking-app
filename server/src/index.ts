@@ -2,10 +2,10 @@ import "reflect-metadata";
 import { AppDataSource } from "./data-source";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { userResolvers } from "./resolvers";
+import { userResolvers } from "./resolvers/User/userResolvers";
 import { verify } from "jsonwebtoken";
 import { createAccessToken, createRefreshToken } from "./auth";
-import { taskResolver } from "./taskResolver";
+import { taskResolver } from "./resolvers/taskResolvers";
 import { sendRefreshToken } from "./sendRefreshToken";
 import { groupResolvers } from "./resolvers/Groups/groupResolvers";
 import express from "express";
@@ -44,7 +44,7 @@ import memberResolver from "./resolvers/Groups/members";
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
-  app.listen(8080, () => {
+  app.listen(4000, () => {
     console.log("server started");
   });
 })();

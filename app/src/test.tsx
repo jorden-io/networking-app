@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from "react";
-import { matrixFind } from "./snip";
 
 export interface Geo {
   lat: string;

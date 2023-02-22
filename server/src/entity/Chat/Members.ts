@@ -20,11 +20,11 @@ export default class Members extends BaseEntity {
 
   @Field()
   @Column("int")
-  groupId: number;
+  group_id: number;
 
   @Field()
   @Column("int")
-  memberId: number;
+  member_id: number;
 
   @Field()
   @CreateDateColumn()

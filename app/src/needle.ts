@@ -72,9 +72,9 @@ export const longestValidParentheses = (s: string): number => {
       stack.push("()");
     } else continue;
   };
-  return stack.length * 2;
+  return stack.length;
 };
-console.log(longestValidParentheses(''));
+console.log(longestValidParentheses("(()(())()(())"));
 
 const findMedianSortedArrays = (
   nums1: number[],

@@ -1,14 +1,14 @@
-export default class Queue {
-  private collection: Array<any> = [];
+export default class Queue<T> {
+  private collection: Array<T> = [];
   items = () => {
     return this.collection;
   };
-  enqueue = <T>(element: T) => {
+  enqueue = (element: T) => {
     return this.collection.push(element);
   };
-  dequeue = <T>(): T => {
-    return this.collection.shift()
-  }
+  dequeue = (): T | undefined => {
+    return this.collection.shift();
+  };
   front = () => {
     return this.collection[0];
   };
@@ -23,3 +23,5 @@ export default class Queue {
     }
   };
 }
+const queue = new Queue<number>();
+queue.enqueue(1);

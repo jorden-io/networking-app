@@ -9,14 +9,13 @@ import {
   CreateDateColumn,
 } from "typeorm";
 import User from "../User";
-//import User from "./User";
 
 @ObjectType()
 @Entity("comments")
 export default class Comments extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  commentId: number;
+  comment_id: number;
 
   @Field()
   @Column("text")
@@ -24,11 +23,11 @@ export default class Comments extends BaseEntity {
 
   @Field()
   @Column("int")
-  userId: number;
+  user_id: number;
 
   @Field()
   @Column("int")
-  postId: number;
+  post_id: number;
 
   @CreateDateColumn()
   created: Date;

@@ -8,14 +8,13 @@ import Friends from "./entity/Profile/Friends/Friends";
 import Comments from "./entity/Profile/comments";
 import Posts from "./entity/Profile/posts";
 import Members from "./entity/Chat/Members";
-
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
   username: "jorby",
-  password: "Minecraft256$",
-  database: "test",
+  password: process.env.DB_PASSWORD,
+  database: "test3",
   synchronize: true,
   logging: false,
   entities: [User, Task, Group, Messages, Friends, Comments, Posts, Members],
